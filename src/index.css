@@ -1,0 +1,94 @@
+.chat-container {
+  height: calc(100vh - 153.5px);
+  overflow-y: scroll;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.input-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.input-container input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.input-container button {
+  padding: 5px 10px;
+}
+
+.message {
+  padding: 15px;
+  border-radius: 10px;
+  display: block;
+  width: fit-content;
+  max-width: 80%;
+  margin: 5px 0px 5px 0px;
+}
+
+.message.user {
+  background-color: rgb(25, 111, 224);
+  color: rgb(255, 255, 255);
+  text-align: left;
+  align-self: flex-end;
+} 
+
+.message.bot {
+  background-color: #ECEFF6;
+  color: rgb(65, 65, 65);
+  text-align: left;
+  align-self: flex-start;
+
+}
+
+.message-content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px #ECEFF6 solid;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+
+.submit-button {
+  width: 150px; /* Adjust the width to your preference */
+  background-color: rgb(25, 111, 224); /* Change the background color */
+  color: rgb(255, 255, 255); /* Change the text color */
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-box {
+  padding: 10px;
+  height: 25px;
+}
