@@ -7,6 +7,7 @@ const API_URL = 'http://127.0.0.1:8000/chatbot'; // Your server URL
 function App() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false);
   const endOfMessagesRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -24,6 +25,7 @@ function App() {
 
     // Add user's message to the state
     setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setLoading(true);
 
     try {
       const response = await axios.post(`${API_URL}`, {
@@ -34,8 +36,10 @@ function App() {
 
       // Add bot's reply to the state
       setMessages((prevMessages) => [...prevMessages, botReply]);
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -50,6 +54,7 @@ function App() {
             <span className="message-content">{message.content}</span>
           </div>
         ))}
+        {loading && <div className="message bot"><div className="loader"></div></div>}
         <div ref={endOfMessagesRef} />
       </div>
       <form onSubmit={handleMessageSubmit} className="input-container">
