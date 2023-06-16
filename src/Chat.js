@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import Icon from './icons/icon.svg';
 
@@ -7,6 +7,13 @@ const API_URL = 'http://127.0.0.1:8000/chatbot'; // Your server URL
 function App() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const endOfMessagesRef = useRef(null);
+
+  const scrollToBottom = () => {
+    endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  useEffect(scrollToBottom, [messages]);
 
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +50,7 @@ function App() {
             <span className="message-content">{message.content}</span>
           </div>
         ))}
+        <div ref={endOfMessagesRef} />
       </div>
       <form onSubmit={handleMessageSubmit} className="input-container">
         <input
