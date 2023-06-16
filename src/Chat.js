@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Icon from './icons/icon.svg';
 
-const API_URL = 'http://localhost:5000'; // Your server URL
+const API_URL = 'http://127.0.0.1:8000/chatbot'; // Your server URL
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -20,6 +20,7 @@ function App() {
       const response = await axios.post(`${API_URL}/chat`, {
         message: newMessage.content,
       });
+
       const botReply = { role: 'bot', content: response.data.reply };
       setMessages([...messages, botReply]);
     } catch (error) {
@@ -30,7 +31,7 @@ function App() {
   return (
     <div style={{ height: '100%' }}>
       <div className="banner">
-      <img src={Icon} alt="Icon" className="icon" />
+        <img src={Icon} alt="Icon" className="icon" />
       </div>
       <div className="chat-container">
         {messages.map((message, index) => (
