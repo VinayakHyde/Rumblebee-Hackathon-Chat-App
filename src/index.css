@@ -57,7 +57,6 @@
   color: rgb(65, 65, 65);
   text-align: left;
   align-self: flex-start;
-
 }
 
 .message-content {
@@ -77,7 +76,6 @@
   margin-right: 10px;
 }
 
-
 .submit-button {
   width: 150px; /* Adjust the width to your preference */
   background-color: rgb(25, 111, 224); /* Change the background color */
@@ -93,61 +91,39 @@
   height: 25px;
 }
 
-.loader {
+.typing-indicator {
   display: inline-block;
   position: relative;
   width: 40px;
   height: 20px;
 }
 
-.loader::before {
-  content: ' ';
-  display: block;
+.dot {
+  display: inline-block;
   position: absolute;
   left: 6px;
-  top: 6px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #333;
-  animation: loader 1.2s infinite ease-in-out both;
+  animation: bounce 1.2s infinite ease-in-out both;
 }
 
-.loader::after {
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 6px;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #333;
-  animation: loader 1.2s infinite ease-in-out both;
-  animation-delay: -0.3s;
+.dot:nth-child(2) {
+  left: 16px;
+  animation-delay: -0.2s;
 }
 
-.loader::before, .loader::after {
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 6px;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #333;
-  animation: loader 1.2s infinite ease-in-out both;
-  animation-delay: -0.6s;
+.dot:nth-child(3) {
+  left: 26px;
+  animation-delay: -0.4s;
 }
 
-@keyframes loader {
+@keyframes bounce {
   0%, 80%, 100% {
-    box-shadow: 0 2.5px;
-    height: 2.5px;
+    transform: scale(0);
   }
   40% {
-    box-shadow: 0 0;
-    height: 5px;
+    transform: scale(1);
   }
 }

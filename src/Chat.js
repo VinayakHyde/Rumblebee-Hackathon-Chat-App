@@ -54,7 +54,7 @@ function App() {
             <span className="message-content">{message.content}</span>
           </div>
         ))}
-        {loading && <div className="message bot"><div className="loader"></div></div>}
+        {loading && <div className="message bot typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
         <div ref={endOfMessagesRef} />
       </div>
       <form onSubmit={handleMessageSubmit} className="input-container">
