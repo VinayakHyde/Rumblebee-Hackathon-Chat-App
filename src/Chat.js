@@ -13,16 +13,20 @@ function App() {
     if (!inputValue.trim()) return;
 
     const newMessage = { role: 'user', content: inputValue };
-    setMessages([...messages, newMessage]);
     setInputValue('');
 
+    // Add user's message to the state
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+
     try {
-      const response = await axios.post(`${API_URL}/chat`, {
+      const response = await axios.post(`${API_URL}`, {
         message: newMessage.content,
       });
 
-      const botReply = { role: 'bot', content: response.data.reply };
-      setMessages([...messages, botReply]);
+      const botReply = { role: 'bot', content: response.data.message };
+
+      // Add bot's reply to the state
+      setMessages((prevMessages) => [...prevMessages, botReply]);
     } catch (error) {
       console.error(error);
     }
