@@ -36,24 +36,15 @@ function App() {
     setInputValue('');
     setLoading(true);
 
-    const botReply = { role: 'bot', content: 'Loading...' };
-    setMessages((messages) => [...messages, botReply]); // Add loading message
-
     try {
       const response = await axios.post(`${API_URL}`, {
         message: newMessage.content,
       });
 
-      setLoading(false);
-      const botResponse = { role: 'bot', content: response.data.message };
+      const botReply = { role: 'bot', content: response.data.message };
       setMessages((messages) => {
-        // Replace the loading message with the actual bot response
-        const updatedMessages = messages.map((message) => {
-          if (message === botReply) {
-            return botResponse;
-          }
-          return message;
-        });
+        const updatedMessages = [...messages, botReply];
+        setLoading(false);
         return updatedMessages;
       });
     } catch (error) {
@@ -73,7 +64,7 @@ function App() {
             <pre className="message-content" dangerouslySetInnerHTML={{ __html: message.content }} />
           </div>
         ))}
-        {loading && ( // Render the loading animation as a new message
+        {loading && ( // Render the loading animation
           <div className="message bot">
             <div className="typing-indicator">
               <div className="dot"></div>
