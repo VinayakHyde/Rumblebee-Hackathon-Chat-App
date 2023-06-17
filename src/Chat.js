@@ -12,7 +12,7 @@ function App() {
       role: 'bot', 
       content: `
       👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!<br />
-      In case you want to speak to an customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.<br />
+      In case you want to speak to a customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.<br />
       It might take us 15-20 min to respond back.<br />
       For instant response, use the chat below.`
     }
