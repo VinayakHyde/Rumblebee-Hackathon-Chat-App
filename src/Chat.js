@@ -36,14 +36,26 @@ function App() {
     setInputValue('');
     setLoading(true);
 
+    const botReply = { role: 'bot', content: 'Loading...' };
+    setMessages((messages) => [...messages, botReply]); // Add loading message
+
     try {
       const response = await axios.post(`${API_URL}`, {
         message: newMessage.content,
       });
 
-        setLoading(false);
-      const botReply = { role: 'bot', content: response.data.message };
-        setMessages((messages) => [...messages, botReply]);
+      setLoading(false);
+      const botResponse = { role: 'bot', content: response.data.message };
+      setMessages((messages) => {
+        // Replace the loading message with the actual bot response
+        const updatedMessages = messages.map((message) => {
+          if (message === botReply) {
+            return botResponse;
+          }
+          return message;
+        });
+        return updatedMessages;
+      });
     } catch (error) {
       setLoading(false);
       console.error(error);
@@ -59,15 +71,17 @@ function App() {
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
             <pre className="message-content" dangerouslySetInnerHTML={{ __html: message.content }} />
-            {message.role === 'bot' && loading && (
-              <div className="typing-indicator">
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-              </div>
-            )}
           </div>
         ))}
+        {loading && ( // Render the loading animation as a new message
+          <div className="message bot">
+            <div className="typing-indicator">
+              <div className="dot"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+            </div>
+          </div>
+        )}
         <div ref={endOfMessagesRef} />
       </div>
       <form onSubmit={handleMessageSubmit} className="input-container">
