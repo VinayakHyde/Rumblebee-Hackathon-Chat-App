@@ -10,11 +10,10 @@ function App() {
   const [messages, setMessages] = useState([
     {
       role: 'bot',
-      content: `
-      👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!
-      In case you want to speak to a customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.
-      It might take us 15-20 min to respond back.
-      For instant response, use the chat below.`
+      content: `👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!
+In case you want to speak to a customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.
+It might take us 15-20 min to respond back.
+For instant response, use the chat below.`
     }
   ]);
   const [inputValue, setInputValue] = useState('');
