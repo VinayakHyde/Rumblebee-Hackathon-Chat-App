@@ -57,8 +57,6 @@
   color: rgb(65, 65, 65);
   text-align: left;
   align-self: flex-start;
-  display: flex; 
-  justify-content: center; 
 }
 
 .message-content {
@@ -96,10 +94,10 @@
 
 .typing-indicator {
   display: flex;
+  justify-content: center;
   position: relative;
   width: 40px;
   height: 20px;
-  align-items: center; 
 }
 
 
