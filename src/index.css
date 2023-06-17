@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .chat-container {
   height: calc(100vh - 153.5px);
   overflow-y: scroll;

@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div style={{ height: '100%' }}>
+    <div>
       <div className="banner">
         <img src={Icon} alt="Icon" className="icon" />
       </div>
