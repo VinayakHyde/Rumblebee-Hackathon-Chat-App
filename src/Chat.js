@@ -7,7 +7,9 @@ import Icon from './icons/icon.svg';
 const API_URL = 'http://127.0.0.1:8000/airesponse';
 
 function App() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { role: 'bot', content: '👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!' }
+  ]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const endOfMessagesRef = useRef(null);
@@ -23,10 +25,8 @@ function App() {
     if (!inputValue.trim()) return;
 
     const newMessage = { role: 'user', content: inputValue };
+    setMessages((messages) => [...messages, newMessage]);
     setInputValue('');
-
-    // Add user's message to the state
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
     setLoading(true);
 
     try {
@@ -34,14 +34,12 @@ function App() {
         message: newMessage.content,
       });
 
+      setLoading(false);
       const botReply = { role: 'bot', content: response.data.message };
-
-      // Add bot's reply to the state
-      setMessages((prevMessages) => [...prevMessages, botReply]);
-      setLoading(false);
+      setMessages((messages) => [...messages, botReply]);
     } catch (error) {
-      console.error(error);
       setLoading(false);
+      console.error(error);
     }
   };
 
