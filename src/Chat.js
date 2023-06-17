@@ -8,8 +8,8 @@ const API_URL = 'http://127.0.0.1:8000/airesponse';
 
 function App() {
   const [messages, setMessages] = useState([
-    { 
-      role: 'bot', 
+    {
+      role: 'bot',
       content: `
       👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!
       In case you want to speak to a customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.
@@ -41,9 +41,9 @@ function App() {
         message: newMessage.content,
       });
 
-      setLoading(false);
+        setLoading(false);
       const botReply = { role: 'bot', content: response.data.message };
-      setMessages((messages) => [...messages, botReply]);
+        setMessages((messages) => [...messages, botReply]);
     } catch (error) {
       setLoading(false);
       console.error(error);
@@ -59,7 +59,13 @@ function App() {
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
             <pre className="message-content" dangerouslySetInnerHTML={{ __html: message.content }} />
-            {message.role === 'bot' && loading && <div className="typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
+            {message.role === 'bot' && loading && (
+              <div className="typing-indicator">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+            )}
           </div>
         ))}
         <div ref={endOfMessagesRef} />

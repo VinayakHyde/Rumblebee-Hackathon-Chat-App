@@ -93,12 +93,13 @@
 }
 
 .typing-indicator {
-  display: inline-flex;
+  display: -webkit-box;
   position: relative;
-  width: 40px;
+  width: 55px;
   height: 20px;
   justify-content: center;
   align-items: center;
+  padding: 0px 20px 0px 20px;
 }
 
 .dot {
