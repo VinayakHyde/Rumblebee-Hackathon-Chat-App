@@ -57,12 +57,14 @@
   color: rgb(65, 65, 65);
   text-align: left;
   align-self: flex-start;
+  display: flex; 
+  justify-content: center; 
 }
 
 .message-content {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  white-space: pre-wrap; /* add this line */
+  white-space: pre-wrap; 
 }
 
 .banner {
@@ -93,21 +95,24 @@
 }
 
 .typing-indicator {
-  display: inline-block;
+  display: flex;
   position: relative;
   width: 40px;
   height: 20px;
+  align-items: center; 
 }
 
+
 .dot {
-  display: inline-block;
-  position: absolute;
-  left: 6px;
+  position: relative;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #333;
   animation: bounce 1.2s infinite ease-in-out both;
+  top: 0; 
+  left: 0; 
+  margin: 0 2px; 
 }
 
 .dot:nth-child(2) {
