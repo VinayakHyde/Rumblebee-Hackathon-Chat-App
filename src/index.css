@@ -62,6 +62,7 @@
 .message-content {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
+  white-space: pre-wrap; /* add this line */
 }
 
 .banner {

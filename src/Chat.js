@@ -2,7 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import Icon from './icons/icon.svg';
 
-const API_URL = 'http://127.0.0.1:8000/chatbot'; // Your server URL
+// const API_URL = 'http://127.0.0.1:8000/chatbot';
+
+const API_URL = 'http://127.0.0.1:8000/airesponse';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -51,7 +53,7 @@ function App() {
       <div className="chat-container">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
-            <span className="message-content">{message.content}</span>
+            <pre className="message-content">{message.content}</pre>
           </div>
         ))}
         {loading && <div className="message bot typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
