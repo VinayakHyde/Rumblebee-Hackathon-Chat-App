@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Icon from './icons/icon.svg';
 
@@ -8,7 +8,14 @@ const API_URL = 'http://127.0.0.1:8000/airesponse';
 
 function App() {
   const [messages, setMessages] = useState([
-    { role: 'bot', content: '👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!' }
+    { 
+      role: 'bot', 
+      content: `
+      👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!<br />
+      In case you want to speak to an customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.<br />
+      It might take us 15-20 min to respond back.<br />
+      For instant response, use the chat below.`
+    }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -51,7 +58,7 @@ function App() {
       <div className="chat-container">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
-            <pre className="message-content">{message.content}</pre>
+            <pre className="message-content" dangerouslySetInnerHTML={{ __html: message.content }} />
           </div>
         ))}
         {loading && <div className="message bot typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
