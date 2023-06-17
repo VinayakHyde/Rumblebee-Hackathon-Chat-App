@@ -13,7 +13,7 @@ function App() {
       content: `
       👋 Hi! I am HiverChat, ask me anything about Hiver for an instant response!
       In case you want to speak to a customer agent? <span style="color: blue; text-decoration: underline; cursor: pointer;">Click here</span>.
-      It might take us 15-20 min to respond back. 
+      It might take us 15-20 min to respond back.
       For instant response, use the chat below.`
     }
   ]);
@@ -59,9 +59,9 @@ function App() {
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
             <pre className="message-content" dangerouslySetInnerHTML={{ __html: message.content }} />
+            {message.role === 'bot' && loading && <div className="typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
           </div>
         ))}
-        {loading && <div className="message bot typing-indicator"><div className="dot"></div><div className="dot"></div><div className="dot"></div></div>}
         <div ref={endOfMessagesRef} />
       </div>
       <form onSubmit={handleMessageSubmit} className="input-container">
